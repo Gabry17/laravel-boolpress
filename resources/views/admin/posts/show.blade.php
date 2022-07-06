@@ -5,5 +5,10 @@
         <h2>Dettagli</h2>
         <h3>Titolo: {{ $post->title }}</h3>
         <p>Descrizione: {{ $post->description }}</p>
+        <form action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}" method="POST">
+            @csrf
+            @method("DELETE")
+            <button class="btn btn-danger">Elimina</button>
+        </form>
     </div>
 @endsection
