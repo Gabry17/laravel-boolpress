@@ -10,7 +10,7 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->title }}</h5>
-                        <a href="{{ route('adminposts.show', ['post' => $item->id]) }}" class="btn btn-primary">Dettagli Post</a>
+                        <a href="{{ route('admin.posts.show', ['post' => $item->id]) }}" class="btn btn-primary">Dettagli Post</a>
                     </div>
                 </div>
             </div>
