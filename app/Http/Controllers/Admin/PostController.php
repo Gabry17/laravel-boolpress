@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
@@ -28,7 +29,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $category = Category::all();
+        return view('admin.posts.create', compact('category'));
     }
 
     /**
@@ -59,7 +61,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('admin.posts.show', compact('post'));
+        $category = $post->category;
+        return view('admin.posts.show', compact('post', 'category'));
     }
 
     /**

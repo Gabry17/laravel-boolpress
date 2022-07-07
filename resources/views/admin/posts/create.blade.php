@@ -26,6 +26,15 @@
                 <label for="description">Descrizione</label>
                 <textarea type="text" class="form-control" name="description" id="description"> {{ old('description') }} </textarea>
             </div>
+            <div class="form-group">
+                <label for="categories">Categoria:</label>
+                <select class="form-control" name="categories" id="categories">
+                    <option value="">Nessuna</option>
+                    @foreach ($category as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endforeach
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Crea</button>
         </form>
     </div>
