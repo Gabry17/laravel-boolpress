@@ -5,7 +5,7 @@
         <h2>Dettagli</h2>
         <h3>Titolo: {{ $post->title }}</h3>
         <p>Descrizione: {{ $post->description }}</p>
-        <p>Categoria: {{ $category ? $category->name : 'Nessuna categoria' }}</p>
+        <p>Categoria: {{ $post->category ? $category->name : 'Nessuna categoria' }}</p>
         <p>Tag: @forelse ($tag as $item)
             {{$item->name}} {{$loop->last ? '' : ','}}
         @empty
