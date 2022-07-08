@@ -6,6 +6,11 @@
         <h3>Titolo: {{ $post->title }}</h3>
         <p>Descrizione: {{ $post->description }}</p>
         <p>Categoria: {{ $category ? $category->name : 'Nessuna categoria' }}</p>
+        <p>Tag: @forelse ($tag as $item)
+            {{$item->name}} {{$loop->last ? '' : ','}}
+        @empty
+            'nessun tag'
+        @endforelse</p>
         <form action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}" method="POST">
             @csrf
             @method("DELETE")
