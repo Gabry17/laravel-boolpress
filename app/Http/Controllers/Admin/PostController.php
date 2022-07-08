@@ -81,7 +81,8 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('admin.posts.edit', compact('post'));
+        $tags = Tag::all();
+        return view('admin.posts.edit', compact('post', 'tags'));
     }
 
     /**
@@ -99,6 +100,10 @@ class PostController extends Controller
         $post->fill($data);
         $post->slug = $this->generatePostSlugFromTitle($post->title);
         $post->save();
+
+        if(isset($data['tags'])) {
+            $post->tags()->sync($data['tags']);
+        }
 
         return redirect()->route('admin.posts.show', ['post' => $post->id]);
     }
@@ -119,7 +124,10 @@ class PostController extends Controller
     private function getValidate(){
         return [
             'title' => 'required|max:255',
-            'description' => 'required'
+            'description' => 'required',
+            'category_id' => 'nullable|exists:categories,id',
+            'tags_id' => 'nullable|exists:tags,id'
+
         ];
     }
 

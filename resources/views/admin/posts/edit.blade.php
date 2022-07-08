@@ -27,6 +27,12 @@
                 <label for="description">Descrizione</label>
                 <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ old('description') ? old('description') : $post->description }}</textarea>
             </div>
+            @foreach ($tags as $item)
+                <div class="form-check">
+                    <input value="{{ $item->id }}" type="checkbox" name="tags[]" id="tag-{{ $item->id }}"  {{ ($post->tags->contains($item) || in_array($item->id, old('tags', []))) ? 'checked' : '' }}>
+                    <label for="tag-{{ $item->id }}">{{ $item->name }}</label>
+                </div>
+            @endforeach
             <button type="submit" class="btn btn-primary">Modifica</button>
         </form>
     </div>
