@@ -1909,7 +1909,24 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'PostComponents'
+  name: 'PostComponents',
+  data: function data() {
+    return {
+      posts: []
+    };
+  },
+  created: function created() {
+    this.addPost();
+  },
+  methods: {
+    addPost: function addPost() {
+      var _this = this;
+
+      axios.get('/api/posts').then(function (resp) {
+        _this.posts = resp.data.results;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -1949,7 +1966,18 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_vm._v("\n    COMPONENTE VUE\n  ")]);
+  return _c("div", [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row row-cols-3"
+  }, _vm._l(_vm.posts, function (elem) {
+    return _c("div", {
+      key: elem.id,
+      staticClass: "col"
+    }, [_c("div", {
+      staticClass: "card"
+    }, [_c("h2", [_vm._v(_vm._s(elem.title))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(elem.description))])])]);
+  }), 0)])]);
 };
 
 var staticRenderFns = [];
@@ -49489,6 +49517,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
