@@ -1,16 +1,16 @@
 <template>
   <div>
-    <WordComponents />
+    <PostComponents />
   </div>
 </template>
 
 <script>
-import WordComponents from '../components/WordComponents.vue';
+import PostComponents from '../components/PostComponents.vue';
 
 export default {
     name: 'App',
     components: {
-        WordComponents
+        PostComponents
     }
 }
 </script>
