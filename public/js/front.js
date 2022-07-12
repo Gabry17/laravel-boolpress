@@ -2020,7 +2020,25 @@ var render = function render() {
     }
   }, [_vm._v("«")]), _vm._v(" "), _c("span", {
     staticClass: "sr-only"
-  })])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("li", {
+  })])]), _vm._v(" "), _vm._l(_vm.last, function (n) {
+    return _c("li", {
+      key: n,
+      staticClass: "page-item",
+      "class": {
+        active: _vm.page === n
+      },
+      on: {
+        click: function click($event) {
+          return _vm.addPost(n);
+        }
+      }
+    }, [_c("a", {
+      staticClass: "page-link",
+      attrs: {
+        href: "#"
+      }
+    }, [_vm._v(_vm._s(n))])]);
+  }), _vm._v(" "), _c("li", {
     staticClass: "page-item"
   }, [_c("a", {
     staticClass: "page-link",
@@ -2042,46 +2060,10 @@ var render = function render() {
     }
   }, [_vm._v("»")]), _vm._v(" "), _c("span", {
     staticClass: "sr-only"
-  })])])])])])]);
+  })])])], 2)])])]);
 };
 
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("li", {
-    staticClass: "page-item"
-  }, [_c("a", {
-    staticClass: "page-link",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("1")])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("li", {
-    staticClass: "page-item"
-  }, [_c("a", {
-    staticClass: "page-link",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("2")])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("li", {
-    staticClass: "page-item"
-  }, [_c("a", {
-    staticClass: "page-link",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("3")])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 

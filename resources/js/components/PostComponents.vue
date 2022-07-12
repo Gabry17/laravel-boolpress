@@ -20,9 +20,7 @@
               <span class="sr-only"></span>
             </a>
           </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li v-for="n in last" :key="n" class="page-item" @click="addPost(n)" :class="{ active: page === n }" ><a class="page-link" href="#">{{ n }}</a></li>
           <li class="page-item">
             <a class="page-link" :class="{ disabled: page === last }" @click="addPost(page + 1)" href="#" aria-label="Next">
               <span aria-hidden="true">&raquo;</span>
