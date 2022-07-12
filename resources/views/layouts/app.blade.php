@@ -18,6 +18,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <title>
+        Ciao
+    </title>
 </head>
 <body>
     <div id="app">
