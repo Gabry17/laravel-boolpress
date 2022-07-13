@@ -1,16 +1,17 @@
 <template>
   <div>
-    <PostComponents />
+    <AppHeader />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import PostComponents from '../components/PostComponents.vue';
+import AppHeader from "../components/AppHeader.vue";
 
 export default {
     name: 'App',
     components: {
-        PostComponents
+        AppHeader
     }
 }
 </script>
