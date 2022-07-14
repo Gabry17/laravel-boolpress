@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 import Home from './pages/Home.vue';
 import About from './pages/About.vue';
 import Blog from './pages/Blog.vue';
+import SinglePage from './pages/SinglePage.vue';
 import NotFound from './pages/NotFound';
 
 const router = new VueRouter(
@@ -28,7 +29,13 @@ const router = new VueRouter(
                 component: Blog
             },
             {
+                path: '/blog/:slug',
+                name: 'singlePage',
+                component: SinglePage
+            },
+            {
                 path: '/*',
+                name: 'notFound',
                 component: NotFound
             }
         ]

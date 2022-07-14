@@ -5,10 +5,7 @@
       <div class="row row-cols-3">
         <!-- card -->
         <div v-for="elem in posts" :key="elem.id" class="col">
-          <div class="card mt-3">
-            <h2>{{ elem.title }}</h2>
-            <p>{{ text(elem.description, 50) }}</p>
-          </div>
+          <CardPosts :elem="elem" />
         </div>
       </div>
       <!-- pagination -->
@@ -34,8 +31,13 @@
 </template>
 
 <script>
+import CardPosts from './CardPosts.vue';
+
 export default {
     name:'PostComponents',
+    components: {
+      CardPosts
+    },
     data(){
       return{
         posts: [],
@@ -59,13 +61,6 @@ export default {
         this.page = resp.data.results.current_page;
         this.last = resp.data.results.last_page;
       })
-      },
-      text(elemArray, maxNum) {
-        if(elemArray.length > maxNum){
-          return elemArray.substring(0, maxNum) + '...';
-        } else {
-          return elemArray;
-        }
       }
     }
 }
