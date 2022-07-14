@@ -10,6 +10,7 @@ class PostController extends Controller
 {
     public function index(){
         $posts = Post::with(['category'])->paginate(6);
+
         return response()->json([
             'success' => true,
             'results' => $posts
@@ -17,7 +18,7 @@ class PostController extends Controller
     }
 
     public function show($slug){
-        $post = Post::where('slug', '=', $slug)->with(['category', 'tag'])->first();
+        $post = Post::where('slug', '=', $slug)->with(['category', 'tags'])->first();
 
         if ($post) {
             return response()->json([

@@ -1984,6 +1984,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.posts = resp.data.results.data;
         _this.page = resp.data.results.current_page;
         _this.last = resp.data.results.last_page;
+        console.log(resp.data.results);
       });
     }
   }

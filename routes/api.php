@@ -19,4 +19,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/posts', 'api\PostController@index')->name('api.posts');
-Route::get('/posts/{slug}', 'api\PostController @show')->name('api.posts.show');
+Route::get('/posts/{slug}', 'api\PostController@show')->name('api.posts.show');

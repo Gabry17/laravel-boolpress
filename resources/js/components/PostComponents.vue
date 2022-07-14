@@ -60,7 +60,9 @@ export default {
         this.posts = resp.data.results.data;
         this.page = resp.data.results.current_page;
         this.last = resp.data.results.last_page;
+        console.log(resp.data.results);
       })
+      
       }
     }
 }
