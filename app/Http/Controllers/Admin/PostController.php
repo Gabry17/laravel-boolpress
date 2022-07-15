@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Mail\SendMail;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -61,6 +63,8 @@ class PostController extends Controller
         if(isset($data['tags'])) {
             $post->tags()->sync($data['tags']);
         }
+
+        Mail::to('info@gmail.com')->send(new SendMail($post));
 
         return redirect()->route('admin.posts.show', ['post' => $post->id]);
     }
