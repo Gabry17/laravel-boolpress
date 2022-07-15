@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="card mt-3">
-        <img v-if="post.cover" class="card-img-top" :src="post.cover" alt="Card image cap" />
+        <img v-if="elem.cover" class="card-img-top" :src="elem.cover" alt="Card image cap" />
         <h2>{{ elem.title }}</h2>
         <p>categorie: {{ addCategory }}</p>
         <p>{{ text(elem.description, 50) }}</p>

@@ -2265,10 +2265,10 @@ var render = function render() {
     staticClass: "container"
   }, [_c("div", {
     staticClass: "card mt-3"
-  }, [_vm.post.cover ? _c("img", {
+  }, [_vm.elem.cover ? _c("img", {
     staticClass: "card-img-top",
     attrs: {
-      src: _vm.post.cover,
+      src: _vm.elem.cover,
       alt: "Card image cap"
     }
   }) : _vm._e(), _vm._v(" "), _c("h2", [_vm._v(_vm._s(_vm.elem.title))]), _vm._v(" "), _c("p", [_vm._v("categorie: " + _vm._s(_vm.addCategory))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.text(_vm.elem.description, 50)))]), _vm._v(" "), _c("router-link", {
