@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -46,6 +47,12 @@ class PostController extends Controller
         $request->validate($this->getValidate());
 
         $data = $request->all();
+
+        if (isset($data['image'])) {
+            $image_path = Storage::put('post_covers', $data['image']);
+            $data['cover'] = $image_path;
+        }
+
         $post = new Post();
         $post->fill($data);
         $post->slug = $this->generatePostSlugFromTitle($post->title);
@@ -125,6 +132,7 @@ class PostController extends Controller
     private function getValidate(){
         return [
             'title' => 'required|max:255',
+            'image' => 'image|max:512',
             'description' => 'required',
             'category_id' => 'nullable|exists:categories,id',
             'tags_id' => 'nullable|exists:tags,id'

@@ -3,6 +3,15 @@
     <section v-if="post">
         <h2>Titolo: {{ post.title }}</h2>
         <p>Categoria: {{ addCategory }}</p>
+        <div>
+            Tag:
+            <router-link 
+            :to="{ name: 'tag' }"
+            v-for="elem in post.tags"
+            :key="elem.id"
+            
+            > {{ elem.name }}</router-link>
+        </div>
         <p>Descrizione: {{ post.description }}</p>
     </section>
     <section v-else>
