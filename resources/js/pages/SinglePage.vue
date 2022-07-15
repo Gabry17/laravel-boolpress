@@ -1,6 +1,9 @@
 <template>
   <div class="container">
     <section v-if="post">
+        <div v-if="post.cover">
+            <img :src="post.cover" alt="" />
+        </div>
         <h2>Titolo: {{ post.title }}</h2>
         <p>Categoria: {{ addCategory }}</p>
         <div>

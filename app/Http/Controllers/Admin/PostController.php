@@ -104,6 +104,16 @@ class PostController extends Controller
         $request->validate($this->getValidate());
         $data = $request->all();
         $post = Post::findOrfail($id);
+
+        if (isset($data['image'])) {
+            if ($post->cover) {
+                Storage::delete($post->cover);
+            }
+
+            $image_path = Storage::put('post_covers', $data['image']);
+            $data['image'] = $image_path;
+        }
+         
         $post->fill($data);
         $post->slug = $this->generatePostSlugFromTitle($post->title);
         $post->save();
@@ -126,6 +136,11 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->tags()->sync([]);
         $post->delete();
+
+        if ($post->cover) {
+            Storage::delete($post->cover);
+        }
+
         return redirect()->route('admin.posts.index');
     }
 

@@ -2265,7 +2265,13 @@ var render = function render() {
     staticClass: "container"
   }, [_c("div", {
     staticClass: "card mt-3"
-  }, [_c("h2", [_vm._v(_vm._s(_vm.elem.title))]), _vm._v(" "), _c("p", [_vm._v("categorie: " + _vm._s(_vm.addCategory))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.text(_vm.elem.description, 50)))]), _vm._v(" "), _c("router-link", {
+  }, [_vm.post.cover ? _c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: _vm.post.cover,
+      alt: "Card image cap"
+    }
+  }) : _vm._e(), _vm._v(" "), _c("h2", [_vm._v(_vm._s(_vm.elem.title))]), _vm._v(" "), _c("p", [_vm._v("categorie: " + _vm._s(_vm.addCategory))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.text(_vm.elem.description, 50)))]), _vm._v(" "), _c("router-link", {
     attrs: {
       to: {
         name: "singlePage",
@@ -2525,7 +2531,12 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_vm.post ? _c("section", [_c("h2", [_vm._v("Titolo: " + _vm._s(_vm.post.title))]), _vm._v(" "), _c("p", [_vm._v("Categoria: " + _vm._s(_vm.addCategory))]), _vm._v(" "), _c("div", [_vm._v("\n            Tag:\n            "), _vm._l(_vm.post.tags, function (elem) {
+  }, [_vm.post ? _c("section", [_vm.post.cover ? _c("div", [_c("img", {
+    attrs: {
+      src: _vm.post.cover,
+      alt: ""
+    }
+  })]) : _vm._e(), _vm._v(" "), _c("h2", [_vm._v("Titolo: " + _vm._s(_vm.post.title))]), _vm._v(" "), _c("p", [_vm._v("Categoria: " + _vm._s(_vm.addCategory))]), _vm._v(" "), _c("div", [_vm._v("\n            Tag:\n            "), _vm._l(_vm.post.tags, function (elem) {
     return _c("router-link", {
       key: elem.id,
       attrs: {

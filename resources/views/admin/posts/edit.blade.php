@@ -15,7 +15,7 @@
         </div>
         @endif
 
-        <form action="{{ route('admin.posts.update', ['post' => $post->id]) }} " method="POST">
+        <form action="{{ route('admin.posts.update', ['post' => $post->id]) }} " method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -33,6 +33,14 @@
                     <label for="tag-{{ $item->id }}">{{ $item->name }}</label>
                 </div>
             @endforeach
+            <div class="form-group mb-3">
+                <label for="image">Immagine</label>
+                <input type="file" id="image" name="image">
+
+                @if ($post->cover)
+                    <img class="card-img-top" src="{{ asset('storage/' . $post->cover) }}" alt="{{ $post->cover }}">
+                @endif
+            </div>
             <button type="submit" class="btn btn-primary">Modifica</button>
         </form>
     </div>
