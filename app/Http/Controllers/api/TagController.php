@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class TagController extends Controller
 {
     public function show($slug){
-        $tag = Tag::where('slug', '=', $slug)->with(['posts'])->first();
+        $tag = Tag::where('slug', '=', $slug)->first();
 
         if($tag){
             return response()->json([

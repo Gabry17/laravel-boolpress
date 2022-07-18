@@ -78,6 +78,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
+
         $category = $post->category;
         $tag = $post->tags;
         return view('admin.posts.show', compact('post', 'category', 'tag'));
@@ -115,7 +116,8 @@ class PostController extends Controller
             }
 
             $image_path = Storage::put('post_covers', $data['image']);
-            $data['image'] = $image_path;
+            $data['cover'] = $image_path;
+            
         }
          
         $post->fill($data);
